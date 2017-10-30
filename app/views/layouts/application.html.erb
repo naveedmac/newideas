@@ -1,14 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Ideas</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>Ideas</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+  <%= link_to('Home', root_path) %>
+
+  |
+  <%= link_to 'Idea Factory', ideas_path %>
+  |
+  <%= link_to 'New Idea', new_idea_path %>
+  |
+
+  <% if user_signed_in? %>
+      <span>Hello, <%= current_user.first_name %> <%= current_user.last_name %></span>
+      |
+      <%= link_to 'Sign Out', session_path, method: :delete %>
+    <% else %>
+      <%= link_to 'Sign Up', new_user_path %>
+      |
+      <%= link_to 'Sign In', new_session_path %>
+    <% end %>
+
+
+  <% if flash[:notice].present? %>
+  <%= flash[:notice] %>
+  <% end %>
+
+  <% if flash[:alert].present? %>
+  <%= flash[:alert] %>
+  <% end %>
+
+
+
+  <%= yield %>
+</body>
 </html>
