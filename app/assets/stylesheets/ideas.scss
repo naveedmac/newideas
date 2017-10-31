@@ -1,0 +1,26 @@
+.hidden {
+  overflow:hidden;
+  display:none
+}
+.show{
+  overflow:hidden;
+  dispaly:block
+}
+.idea-list-item {
+  margin-bottom: 0.5rem;
+}
+
+.review-list > *:not(:last-child) {
+  margin-bottom: 1.2rem;
+}
+
+.review-list-item {
+  border-left: solid medium tomato;
+  padding-left: 0.5rem
+}
+a.black-text{
+  color: #000;
+  &:hover {
+    color: #000;
+  }
+}

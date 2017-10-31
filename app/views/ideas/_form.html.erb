@@ -1,16 +1,16 @@
-<%= form_for @idea do |form| %>
+<%= bootstrap_form_for @idea do |form| %>
   <% if @idea.errors.present? %>
     <p>
       <%= @idea.errors.full_messages.join(', ') %>
     </p>
   <% end %>
   <div>
-    <%= form.label :title %>
+
     <%= form.text_field :title %>
   </div>
 
   <div>
-    <%= form.label :description %>
+    
     <%= form.text_area :description %>
   </div>
 

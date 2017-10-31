@@ -1,7 +1,34 @@
-<h1>All Ideas</h1>
+<h4>All Ideas</h4>
 
 <% @ideas.each do |idea| %>
+<div class="idea-list-item container">
 
-    <%= link_to idea.title, idea_path(idea) %>
-<br>
+
+
+  <div class='row text-justify font-weight-bold'>
+<a onclick="Tog(<%=idea.id%>)">+</a>
+    <%= link_to idea.title, idea_path(idea),:class => "black-text" %>
+  </div>
+  <div class="row">
+    <div id='<%=idea.id%>' class='hidden'>
+
+      <%= idea.description%>
+    </div>
+  </div><br>
+  <div class="row">
+    <div class="col-2">By:
+      <%=link_to idea.user&.full_name %>
+    </div>
+    <div class="col">
+<button type="button" class="btn btn-outline-primary btn-sm">Join</button>
+    </div>
+    <div class="col">
+<button type="button" class="btn btn-outline-primary btn-sm">Like</button>
+    </div>
+    <div class="col-8 text-right">
+      Members: 0 | Likes:10
+    </div>
+  </div>
+  <hr>
+</div>
 <% end %>

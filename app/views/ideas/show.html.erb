@@ -1,9 +1,11 @@
-<h1><%= @idea.title %></h1>
+<b><%= @idea.title %></b>
+<br>
 
-<p><%= @idea.description %></p>
+<%= @idea.description %>
 
 
-<p>By <%= @idea.user&.full_name %></p>
+
+<p>By: <%= @idea.user&.full_name %></p>
 <% if user_signed_in? && can?(:manage, @idea) %>
   <%= link_to 'Edit', edit_idea_path(@idea) %>
 
@@ -15,9 +17,9 @@
   ) %>
 <% end %>
 
-<h2>Reviews</h2>
+<h4>Reviews</h2>
 
-<%= form_for [@idea, @review] do |f| %>
+<%= bootstrap_form_for [@idea, @review] do |f| %>
   <% if @review.errors.present? %>
     <p>
       <%= @review.errors.full_messages.join(', ') %>
@@ -32,7 +34,7 @@
   <% @reviews.each do |review| %>
 
       <p><%= review.review_desc %></p>
-      <p>By <%= review.user&.full_name %></p>
+      <p><strong>By: </strong><%= review.user&.full_name %></p>
       <p><strong>Created At:</strong> <%= time_ago_in_words(review.created_at) %> ago</p>
       <% if can?(:destroy, review) %>
         <%= link_to(
